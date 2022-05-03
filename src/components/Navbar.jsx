@@ -15,12 +15,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <AppBar>
+    <AppBar position="static">
       <Toolbar>
         {/* Drawer Buttom  */}
         <IconButton color="inherit" sx={{ flexGrow: 0 }} onClick={()=>setIsDrawerOpen(true)}>
@@ -47,13 +48,21 @@ function Navbar() {
         </Typography>
 
         <Stack direction="row" spacing={1}>
-          <IconButton color="inherit">
-            <HomeIcon fontSize="medium" />
-          </IconButton>
+          
+            <IconButton color="inherit">
+              <Link to="/" className="navLink">
+              <HomeIcon fontSize="medium"/>
+              </Link>
+            </IconButton>
+          
+          
 
           <IconButton color="inherit">
             <Badge badgeContent={4} color="error">
-              <ShoppingCartIcon fontSize="medium" />
+              <Link to="/cart" className="navLink">
+                <ShoppingCartIcon fontSize="medium" />
+              </Link>
+              
             </Badge>
           </IconButton>
 
