@@ -17,6 +17,7 @@ import StarIcon from "@mui/icons-material/Star";
 import { useDispatch, useSelector } from "react-redux";
 import {addToCart,removeFromCart} from "../store/cartSlice"
 import { useState } from "react";
+import SellIcon from '@mui/icons-material/Sell';
 
 
 
@@ -108,11 +109,21 @@ function Product({ title, price, desc, image, category, rating , id,added}) {
           {/* <br /> */}
           <Stack direction="row" sx={{ width: "100%",marginBottom:"10px" }} spacing={2}>
             <Button size="small" variant="contained">
-              {rating.rate}
+              {rating.rate} 
               <StarIcon />
             </Button>
             <Button size="small" variant="contained" color="info">
               {category}
+            </Button>
+            <Button size="small" variant="outlined" color="primary" >
+              
+              <Typography variant="body1" fontWeight={800} >
+              {rating.count} 
+              </Typography>
+              <Typography variant="caption" sx={{marginLeft:"5px"}} >
+              {"sold"}
+              </Typography>  
+                <SellIcon />
             </Button>
           </Stack>
         </CardContent>
