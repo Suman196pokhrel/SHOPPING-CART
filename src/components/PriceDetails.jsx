@@ -5,13 +5,20 @@ import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
 function PriceDetails() {
-  const value = useSelector(state=>state.cart.length)
-  const products = useSelector(state=>state.cart)
+     const [value, setValue] = useState(0)
+     const products = useSelector(state=>state.cart)
 
   const [price, setPrice] = useState(0)
   const [disPrice, setDisPrice] = useState(0)
 
 
+  const calcValue=(products)=>{
+     let temp =0
+     for(let i=0;i<products.length;i++){
+       temp += products[i].quantity 
+     }
+     return temp
+   }
 
   useEffect(()=>{
      function calcPrice(products){
@@ -21,6 +28,7 @@ function PriceDetails() {
           }
           setPrice(temp.toFixed(2))
           setDisPrice((temp-15).toFixed(2))
+          setValue(calcValue(products))
      }
 
      calcPrice(products)
@@ -46,7 +54,7 @@ function PriceDetails() {
                               marginTop:"10px"
                          }}>
                               <Typography variant="body" color="text.primary">
-                                   Price({2})
+                                   Price({value})
                               </Typography>
                               <Typography variant="body" color="green" fontWeight={800}>
                                   {price}
