@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-import { addToCart, increment,decrement,removeFromCart } from "../store/cartSlice";
+import { addToCart, clearCart,increment,decrement,removeFromCart } from "../store/cartSlice";
+import { Box } from "@mui/system";
 
 function MyCart() {
   const [value, setValue] = useState(0)
@@ -49,6 +50,14 @@ function MyCart() {
   return (
     <>
       <Grid item md={12}>
+        <Box
+        sx={{
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"space-between",
+          padding:"10px"
+        }}
+        >
         <Typography
           variant="h5"
           fontWeight={600}
@@ -60,42 +69,58 @@ function MyCart() {
         >
           My Cart({value})
         </Typography>
+        <Button 
+        variant="outlined" 
+        size="large" 
+        color="secondary"
+        onClick={()=>dispatch(clearCart())}
+        >
+          Clear Cart
+        </Button>
+        </Box>
+        
       </Grid>
 
       <Grid item md={12}>
         <Divider />
       </Grid>
 
-      <Grid item container md={12}>
-        <Stack direction="column">
+      {/* <Grid item container direction={"column"}> */}
+        {/* <Stack direction="column"> */}
           {products.map((product) => (
             <Grid
+            item
               container
-              spacing={5}
               md={12}
               sx={{ margin: "0px", padding: "0px" }}
             >
               {/* Left side */}
               <Grid
-                container
                 item
                 spacing={1}
-                md={4}
-                sm={4}
+                md={3}
+                sm={12}
+                lg={3}
+                xl={6}
                 sx={{
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <Grid item md={12}>
-                  <img
+                <div
+                style={{
+                  display:"flex",
+                  flexDirection:"column",
+                  alignItems:"center",
+                  justifyContent:"space-evenly",
+                  margin:"15px 0px 15px 0px",
+                }}
+                >
+                <img
                     src={product.image}
                     alt={product.title}
                     className="cartProdImg"
                   />
-                </Grid>
-
-                <Grid item md={12} textAlign="center">
                   <Stack
                     direction="row"
                     spacing={1}
@@ -104,6 +129,7 @@ function MyCart() {
                     sx={{
                       alignItems: "center",
                       justifyContent: "center",
+                      marginTop:"15px"
                       // background:"red"
                     }}
                   >
@@ -124,7 +150,9 @@ function MyCart() {
                       <AddIcon />
                     </Button>
                   </Stack>
-                </Grid>
+                </div>
+                 
+                
               </Grid>
 
               {/* Right Side  */}
@@ -132,8 +160,10 @@ function MyCart() {
                 // c/ontainer
                 item
                 spacing={0}
-                md={8}
-                sm={8}
+                md={9}
+                lg={9}
+                xl={6}
+                sm={12}
                 margin="0px"
                 padding="0px"
                 sx={{
@@ -156,8 +186,8 @@ function MyCart() {
               </Grid>
             </Grid>
           ))}
-        </Stack>
-      </Grid>
+        {/* </Stack> */}
+      {/* </Grid> */}
     </>
   );
 }

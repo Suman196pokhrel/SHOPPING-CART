@@ -30,10 +30,13 @@ const cartSlice = createSlice({
                          return item.quantity -=1
                     }
                })
+          },
+          clearCart:(state,action)=>{
+               return []
           }
           
      }
 })
 
-export const {addToCart, removeFromCart,increment,decrement} = cartSlice.actions;
+export const {addToCart, clearCart ,removeFromCart,increment,decrement} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -20,8 +20,8 @@ body{
   height: 200px;
   width: 300px;
   object-fit: scale-down;
-  position: relative;
-  left: 30px;
+  /* position: relative;
+  left: 30px; */
 }
 
 /* fill - This is default. The image is resized to fill the given dimension. If necessary, the image will be stretched or squished to fit
