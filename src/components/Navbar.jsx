@@ -17,8 +17,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
 
+
+
+// Redux 
+import { useSelector } from "react-redux";
+
 function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const value = useSelector(state=>state.cart.length)
 
   return (
     <AppBar position="static">
@@ -58,7 +64,7 @@ function Navbar() {
           
 
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="error">
+            <Badge badgeContent={value} color="error">
               <Link to="/cart" className="navLink">
                 <ShoppingCartIcon fontSize="medium" />
               </Link>

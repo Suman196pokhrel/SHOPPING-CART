@@ -8,3 +8,11 @@ body{
 .navLink{
   color: white;
 }
+
+.cardImage{
+  height: 300;
+}
+
+*{
+  margin: 0;
+}
