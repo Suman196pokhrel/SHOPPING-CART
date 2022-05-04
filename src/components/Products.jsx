@@ -3,6 +3,7 @@ import Product from './Product'
 import {Grid} from "@mui/material"
 import { useEffect } from 'react';
 import axios from 'axios';
+import {HashLoader} from 'react-spinners'
 
 function Products() {
     
@@ -26,28 +27,44 @@ function Products() {
      alignItems="flex-start"
      >
          {
+             products.length >0? (
+                
+                    products.map(item=>(
+                        <Grid 
+                            key={item.id}
+                        item 
+                        sm={12} 
+                        md={6} 
+                        lg={4} 
+                        xl={3}
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        >
+                        <Product 
+                         id={item.id}
+                         title={item.title}
+                         price={item.price}
+                         image={item.image}
+                         desc={item.description}
+                         category={item.category}
+                         rating={item.rating}
+                         />
+                        </Grid>
+                         
+                     ))
+                
+             ):(    <div
+             className='loader'
+             >
+                            <HashLoader 
+                            color="#0D89F0" 
+                            speedMultiplier={2}                   
+                            />
+                     </div>
+                
+             )
              
-             products.map(item=>(
-                <Grid 
-                    key={item.id}
-                item 
-                sm={6} 
-                md={4} 
-                lg={3} 
-                xl={2.4}
-                >
-                <Product 
-                 id={item.id}
-                 title={item.title}
-                 price={item.price}
-                 image={item.image}
-                 desc={item.description}
-                 category={item.category}
-                 rating={item.rating}
-                 />
-                </Grid>
-                 
-             ))
          }
      
     </Grid>
@@ -60,30 +77,3 @@ export default Products;
 
 
 
-{/* <Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}> 
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid>
-<Grid item sm={6} md={4} lg={3} xl={2.4}>
-<Product />
-</Grid> */}

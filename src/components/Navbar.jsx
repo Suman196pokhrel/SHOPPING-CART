@@ -8,7 +8,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 // MUI Icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,10 +24,24 @@ import { useSelector } from "react-redux";
 
 function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const value = useSelector(state=>state.cart.length)
+  const [value, setValue] = useState(0)
+  const products = useSelector(state=>state.cart)
+
+
+  const calcValue=(products)=>{
+    let temp =0
+    for(let i=0;i<products.length;i++){
+      temp += products[i].quantity 
+    }
+    return temp
+  }
+
+    useEffect(()=>{
+     setValue(calcValue(products))
+    },[products])
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         {/* Drawer Buttom  */}
         <IconButton color="inherit" sx={{ flexGrow: 0 }} onClick={()=>setIsDrawerOpen(true)}>
