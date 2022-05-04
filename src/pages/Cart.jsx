@@ -66,7 +66,7 @@ function Cart() {
             </Button>
           </>
         ) : (
-          <></>
+          <><h4>No Products Added</h4></>
         )}
       </Grid>
 

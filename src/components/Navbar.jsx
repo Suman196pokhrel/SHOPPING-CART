@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 
 // Redux 
 import { useSelector } from "react-redux";
+import SidePannelOne from "./SidePannelOne";
 
 function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -54,7 +55,7 @@ function Navbar() {
           onClose={() => setIsDrawerOpen(false)}
         >
           <Box p={2} width="250px" textAlign="center" role="presentatation">
-            <Typography variant="h6">Side Pannel</Typography>
+            <SidePannelOne />
           </Box>
         </Drawer>
 
