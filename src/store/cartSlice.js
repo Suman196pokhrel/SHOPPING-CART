@@ -9,7 +9,6 @@ const cartSlice = createSlice({
                
                
                action.payload.quantity=1 
-               action.payload.added = 1
                state.push(action.payload)
                
           },

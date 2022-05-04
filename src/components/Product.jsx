@@ -26,6 +26,7 @@ function Product({ title, price, desc, image, category, rating , id,added}) {
     const dispatch = useDispatch()
     const products_added_check = useSelector(state=>state.cart)
     const [buttonDis, setButtonDis] = useState(false)
+    const [buttonText, setButtonText] = useState("ADD TO CART")
 
   const handleClickAdd = (product)=>{
     dispatch(addToCart(product))
@@ -35,6 +36,7 @@ function Product({ title, price, desc, image, category, rating , id,added}) {
     products_added_check.map((item)=>{
       if(item.id == id){
         setButtonDis(true)
+        setButtonText("ADDED TO CART")
       }
     })
   },[products_added_check])
@@ -136,7 +138,7 @@ function Product({ title, price, desc, image, category, rating , id,added}) {
             }
             fullWidth
           >
-            Add To Cart
+            {buttonText}
           </Button>
         </CardActions>
       </Card>
