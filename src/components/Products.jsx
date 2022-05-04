@@ -4,20 +4,27 @@ import {Grid} from "@mui/material"
 import { useEffect } from 'react';
 import axios from 'axios';
 import {HashLoader} from 'react-spinners'
+import { useDispatch, useSelector } from 'react-redux';
+import { useSelect } from '@mui/base';
+import {setProducts} from "../store/productSlice"
 
 function Products() {
     
-    const [products,setProducts] = useState([]);
+    // const [products,setProducts] = useState([]);
+    const products = useSelector(state=>state.product.data)
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         axios.get("https://fakestoreapi.com/products")
         .then(res=>{
             const data = res.data;
-            setProducts(data)
+            // setProducts(data)
+            dispatch(setProducts(data))
+            
         }).catch(err=>{
             console.log(err);
         })
-    })
+    },[])
 
 
   return (
@@ -49,6 +56,7 @@ function Products() {
                          desc={item.description}
                          category={item.category}
                          rating={item.rating}
+                         added={item.added}
                          />
                         </Grid>
                          

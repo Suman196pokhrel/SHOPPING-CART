@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 
 import {
   Box,
@@ -14,19 +14,31 @@ import {
 } from "@mui/material";
 
 import StarIcon from "@mui/icons-material/Star";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {addToCart,removeFromCart} from "../store/cartSlice"
+import { useState } from "react";
 
 
 
 
-function Product({ title, price, desc, image, category, rating , id}) {
+function Product({ title, price, desc, image, category, rating , id,added}) {
   
     const dispatch = useDispatch()
+    const products_added_check = useSelector(state=>state.cart)
+    const [buttonDis, setButtonDis] = useState(false)
 
   const handleClickAdd = (product)=>{
     dispatch(addToCart(product))
   }
+
+  useEffect(()=>{
+    products_added_check.map((item)=>{
+      if(item.id == id){
+        setButtonDis(true)
+      }
+    })
+  },[products_added_check])
+
   
   return (
     <Box width="350px" height="550px">
@@ -104,6 +116,9 @@ function Product({ title, price, desc, image, category, rating , id}) {
         </CardContent>
         <CardActions>
           <Button
+          
+            // disabled={added>0?true:false}
+            disabled={buttonDis}
             size="large"
             variant="contained"
             color="warning"
@@ -116,6 +131,7 @@ function Product({ title, price, desc, image, category, rating , id}) {
                 image,
                 category,
                 rating,
+                added
               })
             }
             fullWidth
