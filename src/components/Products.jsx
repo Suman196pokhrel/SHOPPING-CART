@@ -57,6 +57,7 @@ function Products() {
                          category={item.category}
                          rating={item.rating}
                          added={item.added}
+                         
                          />
                         </Grid>
                          
