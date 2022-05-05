@@ -68,7 +68,6 @@ function Login() {
                clientId={process.env.REACT_APP_CLIENT_ID}
                onSuccess={responseGoogleSuccess}
                onFailure={responseGoogleError}
-               cookiePolicy={"single_host_origin"}
                isSignedIn={true}
                render={
                     renderProps=>(
