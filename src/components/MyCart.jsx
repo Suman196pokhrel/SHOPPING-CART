@@ -26,6 +26,7 @@ function MyCart() {
 
 
   const handleClickRem =(productId)=>{
+    toast.error("Item Removed from cart")
      dispatch(removeFromCart(productId))
   }
 
@@ -34,6 +35,7 @@ function MyCart() {
   }
 
   const handleMinus = (product)=>{
+    
     dispatch(decrement(product))
   }
 
@@ -45,11 +47,8 @@ function MyCart() {
     return temp
   }
 
-  const notify= () => {
-    toast("Cart Cleared",{
-
-    });
-
+  const cartClearToast= () => {
+    toast.info("Cart Cleared",);
     dispatch(clearCart());
   };
     useEffect(()=>{
@@ -58,10 +57,7 @@ function MyCart() {
 
   return (
     <>
-    <ToastContainer 
-    draggable
-    autoClose={2500}
-    />
+    
       <Grid item md={12}>
         <Box
         sx={{
@@ -86,7 +82,7 @@ function MyCart() {
         variant="outlined" 
         size="large" 
         color="secondary"
-        onClick={()=>notify()}
+        onClick={cartClearToast}
         >
           Clear Cart
         </Button>
@@ -98,8 +94,6 @@ function MyCart() {
         <Divider />
       </Grid>
 
-      {/* <Grid item container direction={"column"}> */}
-        {/* <Stack direction="column"> */}
           {products.map((product) => (
             <Grid
             key={product.id}
@@ -200,8 +194,6 @@ function MyCart() {
               </Grid>
             </Grid>
           ))}
-        {/* </Stack> */}
-      {/* </Grid> */}
     </>
   );
 }
