@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 
+
 function Login() {
 
      const authStatus = useSelector(state=>state.auth.staus)
@@ -64,7 +65,7 @@ function Login() {
               }}
               >
               <GoogleLogin 
-               clientId={"379238654079-j8p4i0e1t2ge50ua0likduopc720phei.apps.googleusercontent.com"}
+               clientId={process.env.REACT_APP_CLIENT_ID}
                onSuccess={responseGoogleSuccess}
                onFailure={responseGoogleError}
                cookiePolicy={"single_host_origin"}

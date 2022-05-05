@@ -195,7 +195,7 @@ function Navbar() {
                   onClick={logoutHandler}
                   >
                     <GoogleLogout
-                    clientId={"379238654079-j8p4i0e1t2ge50ua0likduopc720phei.apps.googleusercontent.com"}
+                    clientId={process.env.REACT_APP_CLIENT_ID}
                     buttonText={"Logout"}
                     onLogoutSuccess={onLogoutSuccess}
                     />
