@@ -22,7 +22,8 @@ const productSlice = createSlice({
 
           setStatus:(state,action)=>{
                state.status = action.payload;
-          }
+          },
+          
      }
      
 });

@@ -12,12 +12,14 @@ import { FormLabel } from "@mui/material";
 import BuildIcon from '@mui/icons-material/Build';
 
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
+import { applyFilter} from "../store/productSlice"
 
 function SidePannelOne() {
   const products = useSelector((state) => state.product.data);
+  const dispatch = useDispatch()
   const [categories, setCategories] = useState([]);
   const [checkedCat, setCheckedCat] = useState([])
 
@@ -28,20 +30,30 @@ function SidePannelOne() {
      }else{
           setCheckedCat(checkedCat.filter((cat)=> cat !== e.target.value))
      }
+
+     
+
+  }
+
+  const handleFilters = (cat)=>{
+     // dispatch(applyFilter(cat))
+     console.log(cat)
   }
 
   useEffect(() => {
     let temp = [];
-    for (let i = 0; i < products.length; i++) {
-      if (!temp.includes(products[i].category)) {
-        temp.push(products[i].category);
-      }
+    if(products){
+     for (let i = 0; i < products.length; i++) {
+          if (!temp.includes(products[i].category)) {
+            temp.push(products[i].category);
+          }
+        }
     }
+    
 
     setCategories(temp);
   }, []);
 
-  console.log(checkedCat);
 
   return (
     <Card>
@@ -71,10 +83,11 @@ function SidePannelOne() {
             onChange={(e)=>handleCheckChange(e)}
             />
           ))}
-          <Button variant="contained" endIcon={<BuildIcon/>} sx={{
+          <Button onClick={()=>handleFilters(checkedCat)} variant="contained" endIcon={<BuildIcon/>} sx={{
                margin:"5"
           }}
           fullWidth
+          
           >
             Apply filters
           </Button>

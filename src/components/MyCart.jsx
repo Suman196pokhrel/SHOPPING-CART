@@ -89,6 +89,7 @@ function MyCart() {
         {/* <Stack direction="column"> */}
           {products.map((product) => (
             <Grid
+            key={product.id}
             item
               container
               md={12}

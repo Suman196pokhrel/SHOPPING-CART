@@ -7,6 +7,8 @@ import MyCart from "../components/MyCart";
 import PriceDetails from "../components/PriceDetails";
 import { clearCart } from "../store/cartSlice";
 
+import {toast} from "react-toastify"
+
 function Cart() {
   const products = useSelector((state) => state.cart);
 
@@ -17,8 +19,21 @@ function Cart() {
   const dispatch = useDispatch();
 
   const handleOrder = () => {
-    handleOpen();
-    dispatch(clearCart());
+    // handleOpen();
+
+    // For Toast 
+    toast("Order placed sucessfully",{
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+    console.log("Clicked")
+
+    // dispatch(clearCart());
   };
 
   return (
@@ -60,7 +75,7 @@ function Cart() {
               sx={{ marginTop: "20px", height: "60px", fontSize: "20px" }}
               variant="contained"
               color="warning"
-              onClick={() => handleOrder()}
+              onClick={handleOrder}
             >
               Place Order
             </Button>
