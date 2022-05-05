@@ -1,16 +1,21 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import { useEffect } from 'react';
 // Pages 
 import Home from "./pages/Home";
 import Cart from "./pages/Cart"
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import {fetchproducts} from "./store/productSlice"
 
 function App() {
   const authStatus = useSelector(state=>state.auth.status)
+  const dispatch = useDispatch()
 
+  useEffect(()=>{
+    dispatch(fetchproducts())
+},[])
   return (
     <div className="App">
       <BrowserRouter>

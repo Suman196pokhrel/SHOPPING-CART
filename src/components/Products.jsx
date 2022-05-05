@@ -7,6 +7,7 @@ import {HashLoader} from 'react-spinners'
 import { useDispatch, useSelector } from 'react-redux';
 import { useSelect } from '@mui/base';
 import {setProducts} from "../store/productSlice"
+import {fetchproducts} from "../store/productSlice"
 
 function Products() {
     
@@ -14,17 +15,10 @@ function Products() {
     const products = useSelector(state=>state.product.data)
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-        axios.get("https://fakestoreapi.com/products")
-        .then(res=>{
-            const data = res.data;
-            // setProducts(data)
-            dispatch(setProducts(data))
-            
-        }).catch(err=>{
-            console.log(err);
-        })
-    },[])
+
+//     useEffect(()=>{
+//       dispatch(fetchproducts())
+//   },[])
 
 
   return (
