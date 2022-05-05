@@ -3,7 +3,7 @@
 ---
 
 Check out the application
-By ![Clicking Here](https://suman196pokhrel.github.io/Shopping-Cart/)
+By [Clicking Here](https://suman196pokhrel.github.io/Shopping-Cart/)
 
 ---
 
