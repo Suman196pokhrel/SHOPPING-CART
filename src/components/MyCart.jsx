@@ -16,6 +16,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 import { addToCart, clearCart,increment,decrement,removeFromCart } from "../store/cartSlice";
 import { Box } from "@mui/system";
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyCart() {
   const [value, setValue] = useState(0)
@@ -43,12 +45,23 @@ function MyCart() {
     return temp
   }
 
+  const notify= () => {
+    toast("Cart Cleared",{
+
+    });
+
+    dispatch(clearCart());
+  };
     useEffect(()=>{
      setValue(calcValue(products))
     },[products])
 
   return (
     <>
+    <ToastContainer 
+    draggable
+    autoClose={2500}
+    />
       <Grid item md={12}>
         <Box
         sx={{
@@ -73,7 +86,7 @@ function MyCart() {
         variant="outlined" 
         size="large" 
         color="secondary"
-        onClick={()=>dispatch(clearCart())}
+        onClick={()=>notify()}
         >
           Clear Cart
         </Button>

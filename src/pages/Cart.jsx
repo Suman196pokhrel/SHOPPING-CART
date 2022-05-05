@@ -7,7 +7,9 @@ import MyCart from "../components/MyCart";
 import PriceDetails from "../components/PriceDetails";
 import { clearCart } from "../store/cartSlice";
 
-import {toast} from "react-toastify"
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Cart() {
   const products = useSelector((state) => state.cart);
@@ -18,22 +20,15 @@ function Cart() {
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
 
-  const handleOrder = () => {
-    // handleOpen();
+  const notify= () => {
+    toast("Order Placed SucessFully",{
+
+    });
 
     // For Toast 
-    toast("Order placed sucessfully",{
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
-    console.log("Clicked")
+    // const notify("Order Placed")
 
-    // dispatch(clearCart());
+    dispatch(clearCart());
   };
 
   return (
@@ -75,16 +70,22 @@ function Cart() {
               sx={{ marginTop: "20px", height: "60px", fontSize: "20px" }}
               variant="contained"
               color="warning"
-              onClick={handleOrder}
+              // onClick={handleOrder}
+              onClick={notify}
+
             >
               Place Order
             </Button>
+            
           </>
         ) : (
           <><h4>No Products Added</h4></>
         )}
       </Grid>
-
+      <ToastContainer 
+            draggable
+            autoClose={2500}
+            />
       <ModalOne open={open} handleClose={handleClose} />
     </Grid>
   );
