@@ -2,7 +2,7 @@
   "name": "shopping-cart",
   "version": "0.1.0",
   "private": true,
-  "homepage":  "https://Suman196pokhrel.github.io",
+  "homepage":  "https://Suman196pokhrel.github.io/Shopping-Cart",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
