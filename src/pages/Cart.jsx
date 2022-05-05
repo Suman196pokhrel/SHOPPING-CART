@@ -9,6 +9,8 @@ import { clearCart } from "../store/cartSlice";
 
 import {ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {motion} from "framer-motion"
+
 
 
 function Cart() {
@@ -55,13 +57,32 @@ function Cart() {
         sx={{
           margin: "0",
           padding: "0",
+          position:"relative",
+          left:"-500px"
         }}
+        component={motion.div}
+        
+        animate={{ x:"500px",type:"spring" }}
+        transition={{ duration: 0.4 }}
       >
         <MyCart />
       </Grid>
 
       {/* Price Details  */}
-      <Grid item sm={12} md={4} lg={4}>
+      <Grid 
+      item 
+      sm={12} 
+      md={4} 
+      lg={4}
+      sx={{
+        position:"relative",
+        left:"500px"
+      }}
+      component={motion.div}
+        
+        animate={{ x:"-500px" }}
+        transition={{ duration: 0.4 }}
+      >
         {products.length > 0 ? (
           <>
             <PriceDetails />
