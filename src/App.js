@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
 // Pages 
@@ -15,14 +15,15 @@ function App() {
 
   useEffect(()=>{
     dispatch(fetchproducts())
+    
 },[])
   return (
     <div className="App">
       <BrowserRouter>
       <Navbar />
         <Routes>
-          <Route path='/' element={authStatus?<Home />:<Login />} />
-          <Route path='/cart' element={authStatus?<Cart />:<Login />} />
+        <Route path='/Shopping-Cart' element={authStatus?<Home />:<Login />} />
+        <Route path='/cart' element={authStatus?<Cart />:<Login />} />
 
         </Routes>
       

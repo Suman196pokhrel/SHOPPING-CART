@@ -109,7 +109,7 @@ function Navbar() {
         <Stack direction="row" spacing={1}>
           <Tooltip title="Home" TransitionComponent={Zoom} leaveDelay={200}>
             <IconButton color="inherit">
-              <Link to="/" className="navLink">
+              <Link to="/Shopping-Cart" className="navLink">
                 <HomeIcon fontSize="medium" />
               </Link>
             </IconButton>
