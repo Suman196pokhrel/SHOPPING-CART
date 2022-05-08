@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Product from "./Product";
-import { Divider, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography ,Chip} from "@mui/material";
 import { useEffect } from "react";
 import axios from "axios";
 import { HashLoader } from "react-spinners";
@@ -13,6 +13,8 @@ function Products() {
   const products = useSelector((state) => state.product.data);
   const dispatch = useDispatch();
   const filteredProd = useSelector((state) => state.filteredProducts.fProducts);
+  const selectedFilters = useSelector(state=>state.filteredProducts.filters)
+
 
   //     useEffect(()=>{
   //       dispatch(fetchproducts())
@@ -20,6 +22,15 @@ function Products() {
 
   return (
     <>
+    <Box
+    sx={{
+      // background:"yellow",
+      display:"flex",
+      flexDirection:"column",
+      alignItems:"flex-start",
+      justifyContent:"center"
+    }}
+    >
       <Typography
         variant="h4"
         color="primary"
@@ -31,6 +42,44 @@ function Products() {
       >
         {filteredProd.length > 0 ? "Filtered Products" : "All Products"}
       </Typography>
+
+      
+
+        {/* Display selected FIlters   */}
+        
+        {
+          selectedFilters.length >0 ?(
+            <Box
+            sx={{
+              // background:"blue",
+              paddingLeft:"50px",
+              display:"flex",
+            flexDirection:"row",
+            alignItems:"center",
+            // justifyContent:"center"
+            }}
+            >
+              <Typography
+              variant="body2"
+              color="text.secondary"
+              >
+                Applied filters
+              </Typography>
+              {
+                selectedFilters.map((item)=>(
+                  <Chip label={item} color="secondary" variant="outlined"sx={{
+                    margin:"5px"
+                  }} />
+                ))
+              }
+            </Box>
+            
+          )
+          :
+          (<></>)
+        }
+    </Box>
+      
 
       <Divider />
 
