@@ -30,6 +30,7 @@ By [Clicking Here](https://suman196pokhrel.github.io/Shopping-Cart/)
      9. ReduxToolKit integrated in all Cart-operations
      10. Google Login
      11. Google Logout
+     12. Filter Products based on categories
 
      
      12. Bounce animation on Products main page (Framer motion)
@@ -41,10 +42,7 @@ By [Clicking Here](https://suman196pokhrel.github.io/Shopping-Cart/)
 
 
 2. Upcomming Features
-     1. Drawer style improvement
-     2. Prducts Filter Functionality
-     3. Prosime based toasts while placeing orders
-     4. Mobile Responsiveness
+     3. Mobile Responsiveness
  
 
 
