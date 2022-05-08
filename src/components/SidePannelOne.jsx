@@ -29,22 +29,32 @@ function SidePannelOne() {
      const index = checkedCat.indexOf(e.target.value)
      if(index===-1){
           // setCheckedCat([...checkedCat,e.target.value])
-          dispatch(addFilters(e.target.value))
+          dispatch(addFilters({
+            value :e.target.value,
+            products
+          }))
+          // dispatch(applyFilters({products,checkedCat}))
           // dispatch push action 
 
      }else{
           // setCheckedCat(checkedCat.filter((cat)=> cat !== e.target.value))
-          dispatch(removeFilters(e.target.value))
+          dispatch(removeFilters(
+            {
+              value :e.target.value,
+              products
+            }
+          ))
+          // dispatch(applyFilters({products,checkedCat}))
           // dispatch pop action by sending element value as paylad to remove action 
      }     
 
   }
 
-  const handleApplyFilters = (checkedCat)=>{
-    console.log(products,checkedCat)
-     dispatch(applyFilters({products,checkedCat}))
+  // const handleApplyFilters = (checkedCat)=>{
+  //   console.log(products,checkedCat)
+  //    dispatch(applyFilters({products,checkedCat}))
      
-  }
+  // }
 
 
   useEffect(() => {
@@ -90,7 +100,7 @@ function SidePannelOne() {
             onChange={(e)=>handleCheckChange(e)}
             />
           ))}
-          <Button 
+          {/* <Button 
           onClick={()=>handleApplyFilters(checkedCat)} 
           variant="contained" 
           endIcon={<BuildIcon/>} 
@@ -101,7 +111,7 @@ function SidePannelOne() {
           
           >
             Apply filters
-          </Button>
+          </Button> */}
         </FormGroup>
         </form>
       </Stack>

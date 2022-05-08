@@ -11,10 +11,16 @@ const filtersSlice = createSlice({
      },
      reducers:{
           addFilters:(state,action)=>{
-               state.filters.push(action.payload)
+               state.filters.push(action.payload.value)
+               const filtProd = action.payload.products.filter(item=> state.filters.includes(item.category))
+               state.fProducts = filtProd
+
           },
           removeFilters:(state,action)=>{
-               state.filters =  state.filters.filter(item=> item !== action.payload)
+               state.filters =  state.filters.filter(item=> item !== action.payload.value)
+               
+               const filtProd = action.payload.products.filter(item=> state.filters.includes(item.category))
+               state.fProducts = filtProd
           },
           applyFilters:(state,action)=>{
                const filters = action.payload.checkedCat
