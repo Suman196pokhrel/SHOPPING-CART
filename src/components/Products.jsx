@@ -12,7 +12,7 @@ function Products() {
   // const [products,setProducts] = useState([]);
   const products = useSelector((state) => state.product.data);
   const dispatch = useDispatch();
-  const filteredProd = useSelector((state) => state.filteredProducts);
+  const filteredProd = useSelector((state) => state.filteredProducts.fProducts);
 
   //     useEffect(()=>{
   //       dispatch(fetchproducts())

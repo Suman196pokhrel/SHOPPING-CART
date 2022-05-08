@@ -15,32 +15,37 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
-import {applyFilters,clearFilters} from "../store/filtersSlice"
+import {applyFilters,clearFilters,addFilters,removeFilters} from "../store/filtersSlice"
 
 
 function SidePannelOne() {
   const products = useSelector((state) => state.product.data);
+  const checkedCat = useSelector(state=>state.filteredProducts.filters)
   const dispatch = useDispatch()
   const [categories, setCategories] = useState([]);
-  const [checkedCat, setCheckedCat] = useState([])
+  
 
   const handleCheckChange = (e)=>{
      const index = checkedCat.indexOf(e.target.value)
      if(index===-1){
-          setCheckedCat([...checkedCat,e.target.value])
+          // setCheckedCat([...checkedCat,e.target.value])
+          dispatch(addFilters(e.target.value))
+          // dispatch push action 
+
      }else{
-          setCheckedCat(checkedCat.filter((cat)=> cat !== e.target.value))
-     }
-
-     
+          // setCheckedCat(checkedCat.filter((cat)=> cat !== e.target.value))
+          dispatch(removeFilters(e.target.value))
+          // dispatch pop action by sending element value as paylad to remove action 
+     }     
 
   }
 
-  const handleApplyFilters = (filters)=>{
-    console.log(products,filters)
-     dispatch(applyFilters({products,filters}))
+  const handleApplyFilters = (checkedCat)=>{
+    console.log(products,checkedCat)
+     dispatch(applyFilters({products,checkedCat}))
      
   }
+
 
   useEffect(() => {
     let temp = [];
