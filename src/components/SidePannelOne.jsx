@@ -15,7 +15,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
-import { applyFilter} from "../store/productSlice"
+import {applyFilters,clearFilters} from "../store/filtersSlice"
+
 
 function SidePannelOne() {
   const products = useSelector((state) => state.product.data);
@@ -35,9 +36,10 @@ function SidePannelOne() {
 
   }
 
-  const handleFilters = (cat)=>{
-     // dispatch(applyFilter(cat))
-     console.log(cat)
+  const handleApplyFilters = (filters)=>{
+    console.log(products,filters)
+     dispatch(applyFilters({products,filters}))
+     
   }
 
   useEffect(() => {
@@ -83,7 +85,11 @@ function SidePannelOne() {
             onChange={(e)=>handleCheckChange(e)}
             />
           ))}
-          <Button onClick={()=>handleFilters(checkedCat)} variant="contained" endIcon={<BuildIcon/>} sx={{
+          <Button 
+          onClick={()=>handleApplyFilters(checkedCat)} 
+          variant="contained" 
+          endIcon={<BuildIcon/>} 
+          sx={{
                margin:"5"
           }}
           fullWidth
